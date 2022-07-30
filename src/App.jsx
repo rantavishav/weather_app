@@ -6,6 +6,7 @@ import { LayoutWrapper } from './components';
 import { Spinner } from 'react-bootstrap';
 
 function App() {
+  console.log(process.env.REACT_APP_X_RAPIDAPI_KEY);
   let mainContent = guestRoutes.map((route) =>
     route.component ? (
       <Route
