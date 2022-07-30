@@ -1,11 +1,18 @@
 import { put } from 'redux-saga/effects';
 
-import { GET_LOCATION_SEARCH_RESULTS, GET_WEATHER_DETAILS_URL } from '../../../apis';
+import {
+  GET_LOCATION_SEARCH_RESULTS,
+  GET_THREE_DAY_FORCAST_URL,
+  GET_WEATHER_DETAILS_URL
+} from '../../../apis';
 import { errorHandler } from '../../../utils';
 import {
   getLocationListFail,
   getLocationListStart,
   getLocationListSuccess,
+  getThreeDayForcastListFail,
+  getThreeDayForcastListStart,
+  getThreeDayForcastListSuccess,
   getWeatherDetailFail,
   getWeatherDetailStart,
   getWeatherDetailSuccess
@@ -39,6 +46,23 @@ export function* getWeatherDetailSaga(action) {
     },
     failHandler: yield function* (response) {
       yield put(getWeatherDetailFail(response));
+    },
+    failHandlerType: 'CUSTOM',
+    apiType: 'get'
+  });
+}
+
+// get search list of location saga
+export function* getThreeDayForcastListSaga(action) {
+  yield put(getThreeDayForcastListStart());
+  const { location = '' } = action.payload;
+  yield errorHandler({
+    endpoint: `${GET_THREE_DAY_FORCAST_URL}${location}`,
+    successHandler: yield function* (response) {
+      yield put(getThreeDayForcastListSuccess(response?.forecast?.forecastday || []));
+    },
+    failHandler: yield function* (response) {
+      yield put(getThreeDayForcastListFail(response));
     },
     failHandlerType: 'CUSTOM',
     apiType: 'get'
