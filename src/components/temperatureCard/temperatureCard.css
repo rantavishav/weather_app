@@ -1,0 +1,23 @@
+.temperature-container .temperature-value {
+  font-weight: 100;
+  font-size: 10rem;
+  line-height: 100%;
+}
+
+.temperature-units-text {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
+.temperature-date,
+.temperature-day-time {
+  font-weight: 300;
+  font-size: 2rem;
+  text-shadow: -1.51px 2.26px 0.75px rgba(0, 0, 0, 0.1);
+}
+
+.temperature-day-time {
+  font-size: 1rem;
+}

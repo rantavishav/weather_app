@@ -1,0 +1,11 @@
+.weather-stats-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  font-weight: 300;
+}
+
+.weather-stats-icon {
+  width: 20px;
+}
