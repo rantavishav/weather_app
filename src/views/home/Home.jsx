@@ -1,4 +1,4 @@
-import { SearchBar, TemperatureCard, WeatherIcon } from '../../components';
+import { SearchBar, TemperatureCard, WeatherIcon, WeatherStats } from '../../components';
 
 // import css for this page
 import './Home.css';
@@ -10,7 +10,8 @@ const Home = () => {
         <WeatherIcon />
         <SearchBar />
       </div>
-      <TemperatureCard />
+      <TemperatureCard className="mb-4" />
+      <WeatherStats className="mb-4" />
     </div>
   );
 };
