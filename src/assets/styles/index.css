@@ -9,19 +9,9 @@
 body {
   font-family: 'Lato', sans-serif;
   letter-spacing: -0.28px;
+  color: #ffffff;
 }
 
-.mendatory_sign:after {
-  content: ' *';
-  color: red;
-  font-weight: bold;
-}
-
-.custom-label {
-  font-weight: bold;
-}
-
-/* formcss */
 h1 {
   font-weight: 800;
   font-size: 30px;
