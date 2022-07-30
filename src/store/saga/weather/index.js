@@ -3,9 +3,9 @@ import { put } from 'redux-saga/effects';
 import { GET_LOCATION_SEARCH_RESULTS, GET_WEATHER_DETAILS_URL } from '../../../apis';
 import { errorHandler } from '../../../utils';
 import {
-  getlocationListFail,
-  getlocationListStart,
-  getlocationListSuccess,
+  getLocationListFail,
+  getLocationListStart,
+  getLocationListSuccess,
   getWeatherDetailFail,
   getWeatherDetailStart,
   getWeatherDetailSuccess
@@ -13,15 +13,15 @@ import {
 
 // get search list of location saga
 export function* getLocationListSaga(action) {
-  yield put(getlocationListStart());
+  yield put(getLocationListStart());
   const { searchTerm = '' } = action.payload;
   yield errorHandler({
     endpoint: `${GET_LOCATION_SEARCH_RESULTS}${searchTerm}`,
     successHandler: yield function* (response) {
-      yield put(getlocationListSuccess(response));
+      yield put(getLocationListSuccess(response));
     },
     failHandler: yield function* (response) {
-      yield put(getlocationListFail(response));
+      yield put(getLocationListFail(response));
     },
     failHandlerType: 'CUSTOM',
     apiType: 'get'
