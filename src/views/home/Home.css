@@ -5,8 +5,8 @@
 
 .home-loading-container {
   position: absolute;
-  top: 280px;
-  left: 30%;
+  top: 100%;
+  left: 5%;
   font-size: 1.5rem;
   display: flex;
   justify-content: center;
