@@ -9,6 +9,7 @@ import SearchOptions from './searchOptions';
 import './searchBar.css';
 import {
   getSearchListAction,
+  getThreeDayForcastAction,
   getWeatherDetailAction,
   resetLocationList
 } from '../../store/sagaActions';
@@ -27,6 +28,7 @@ const SearchBar = () => {
 
   const handleOptionSelect = (location) => {
     dispatch(getWeatherDetailAction({ location: location.name }));
+    dispatch(getThreeDayForcastAction({ location: location.name }));
     setSearchTerm(location.name);
     closeSearchOptions();
   };

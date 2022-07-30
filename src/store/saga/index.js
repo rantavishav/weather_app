@@ -1,12 +1,17 @@
 import { all, takeLatest } from 'redux-saga/effects';
 
-import { getLocationListSaga, getWeatherDetailSaga } from './weather';
-import { getSearchListAction, getWeatherDetailAction } from '../sagaActions';
+import { getLocationListSaga, getThreeDayForcastListSaga, getWeatherDetailSaga } from './weather';
+import {
+  getSearchListAction,
+  getThreeDayForcastAction,
+  getWeatherDetailAction
+} from '../sagaActions';
 
 // watcher saga
 function* watchWeather() {
   yield takeLatest(getSearchListAction.type, getLocationListSaga);
   yield takeLatest(getWeatherDetailAction.type, getWeatherDetailSaga);
+  yield takeLatest(getThreeDayForcastAction.type, getThreeDayForcastListSaga);
 }
 
 export default function* rootSaga() {
