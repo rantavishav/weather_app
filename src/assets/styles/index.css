@@ -39,3 +39,7 @@ input {
 ::placeholder {
   color: #fff;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
