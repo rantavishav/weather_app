@@ -5,12 +5,14 @@ import { RenderIf } from '../../../utils';
 import './searchOptions.css';
 
 const SearchOptions = ({ handleOptionSelect = () => null }) => {
-  const { locationList } = useSelector((state) => state.weather.location);
+  const { locationList, errorMsg } = useSelector((state) => state.weather.location);
 
-  if (!locationList) return null;
+  if (!locationList && !errorMsg) return null; // on inital loading
   return (
     <div className="w-100 search-result-box">
-      <RenderIf isTrue={locationList.length > 0}>
+      <RenderIf isTrue={errorMsg && !locationList}>{errorMsg}</RenderIf>
+
+      <RenderIf isTrue={locationList && locationList.length > 0}>
         {locationList?.map((location) => (
           <div
             className="search-result-content-container cursor-pointer"
@@ -21,7 +23,7 @@ const SearchOptions = ({ handleOptionSelect = () => null }) => {
         ))}
       </RenderIf>
 
-      <RenderIf isTrue={!(locationList.length > 0)}>No results found</RenderIf>
+      <RenderIf isTrue={locationList && !(locationList.length > 0)}>No results found</RenderIf>
     </div>
   );
 };

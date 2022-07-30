@@ -7,7 +7,11 @@ import SearchOptions from './searchOptions';
 
 // import style for this component
 import './searchBar.css';
-import { getSearchListAction, getWeatherDetailAction } from '../../store/sagaActions';
+import {
+  getSearchListAction,
+  getWeatherDetailAction,
+  resetLocationList
+} from '../../store/sagaActions';
 
 const SearchBar = () => {
   const [showSearchOptions, setShowSearchOptions] = useState(false);
@@ -48,7 +52,11 @@ const SearchBar = () => {
 
   // call api when debouncedSearchTerm changes
   useEffect(() => {
-    dispatch(getSearchListAction({ searchTerm: debouncedSearchTerm }));
+    if (debouncedSearchTerm) {
+      dispatch(getSearchListAction({ searchTerm: debouncedSearchTerm }));
+    } else {
+      dispatch(resetLocationList()); // reset location list when search term is empty
+    }
   }, [debouncedSearchTerm]);
 
   return (

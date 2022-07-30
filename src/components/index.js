@@ -4,3 +4,4 @@ export { default as SearchBar } from './searchBar';
 export { default as TemperatureCard } from './temperatureCard';
 export { default as WeatherStats } from './weatherStats';
 export { default as WeatherCard } from './weatherCard';
+export { default as LocationCard } from './locationCard';
